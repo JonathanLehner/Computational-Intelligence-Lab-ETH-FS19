@@ -24,7 +24,7 @@
 		\item $\langle \mathbf{x} \pm \mathbf{y}, \mathbf{x} \pm \mathbf{y} \rangle = \langle \mathbf{x}, \mathbf{x} \rangle \pm 2 \langle \mathbf{x}, \mathbf{y} \rangle + \langle \mathbf{y}, \mathbf{y} \rangle$
 		\item $\langle \mathbf{x}, \mathbf{y} + \mathbf{z} \rangle = \langle \mathbf{x}, \mathbf{y} \rangle + \langle \mathbf{x}, \mathbf{z} \rangle$
 		\item $\langle \mathbf{x}, \mathbf{y} \rangle = \|\mathbf{x}\|_2 \cdot \|\mathbf{y}\|_2 \cdot \cos(\theta)$
-		\item Projection of $\mathbf{y}$ onto $\mathbf{x}$: $\mathbf{y_x}= \frac{\langle \mathbf{x}, \mathbf{y} \rangle}{\|\mathbf{x}\|_2} \cdot \frac{\mathbf{x}}{\|\mathbf{x}\|_2}$ or $\mathbf{y_x}= \langle \mathbf{x}, \mathbf{y} \rangle \cdot \mathbf{x}$ when $\mathbf{x}$ is a unit vector.git 
+		\item Projection of $\mathbf{y}$ onto $\mathbf{x}$: $\mathbf{y_x}= \frac{\langle \mathbf{x}, \mathbf{y} \rangle}{\|\mathbf{x}\|_2} \cdot \frac{\mathbf{x}}{\|\mathbf{x}\|_2}$ or $\mathbf{y_x}= \langle \mathbf{x}, \mathbf{y} \rangle \cdot \mathbf{x}$ when $\mathbf{x}$ is a unit vector.
 	\end{inparaitem}
 	\item[Outer Product:] $\mathbf{u} \mathbf{v}^\top$, $(\mathbf{u} \mathbf{v}^\top)_{i, j} = \mathbf{u}_i \mathbf{v}_j$
 	\item[Transp. + Inv.:] $(\mathbf{A}^\top)^{-1} = (\mathbf{A}^{-1})^\top$
@@ -62,7 +62,8 @@ $\frac{\partial}{\partial \mathbf{x}}(\| \mathbf{x}-\mathbf{b} \|_2) = \frac{\ma
 $\frac{\partial}{\partial \mathbf{x}}(\|\mathbf{x}\|^2_2) = \frac{\partial}{\partial \mathbf{x}} (\mathbf{x}^\top \mathbf{x}) = 2\mathbf{x}$\\
 $\frac{\partial}{\partial \mathbf{X}}(\|\mathbf{X}\|_F^2) = 2\mathbf{X}$\quad
 $\frac{\partial}{\partial \mathbf{X}} \mathbf{Tr}(\mathbf{X})=\mathbf{I}$ \\
-$\frac{\partial}{\partial \mathbf{x}}(\|\mathbf{Ax - b}\|_2^2) = \mathbf{2(A^\top Ax-A^\top b)}$
+$\frac{\partial}{\partial \mathbf{x}}(\|\mathbf{Ax - b}\|_2^2) = \mathbf{2(A^\top Ax-A^\top b)}$ |
+$\mathbf{H_{i,j}}=\frac{\partial^2 f}{\partial x_i \partial x_j}$
 
 \subsection*{Eigenvalue / -vectors}
 Eigenvalue Problem: $\mathbf{Ax} = \lambda \mathbf{x}$\\
