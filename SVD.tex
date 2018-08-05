@@ -9,7 +9,7 @@ $(\mathbf{D}^{-1})_{i,i} = \frac{1}{\mathbf{D}_{i, i}}$ (don't forget to transpo
 1. calculate $\mathbf{A}^\top \mathbf{A}$.\\
 2. calculate eigenvalues of $\mathbf{A}^\top \mathbf{A}$, the square root of them, in descending order, are the diagonal elements of $\mathbf{D}$.\\
 3. calculate eigenvectors of $\mathbf{A}^\top \mathbf{A}$ using the eigenvalues resulting in the columns of $\mathbf{V}$.\\
-4. calculate the missing matrix: $\mathbf{U} = \mathbf{A} \mathbf{V} \mathbf{D}^{-1}$.\\
+4. calculate the missing matrix: $\mathbf{U} = \mathbf{A} \mathbf{V} \mathbf{D}^{-1}$. (or use $\mathbf{AV}=\mathbf{UD}$ and $\mathbf{UU^T}=\mathbf{I}$ if $\mathbf{D}$ not invertible) \\
 5. normalize each column of $\mathbf{U}$ and $\mathbf{V}$.
 
 \subsection*{Low-Rank approximation}
