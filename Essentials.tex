@@ -1,22 +1,19 @@
 % -*- root: Main.tex -*-
 \section{Essentials}
 \subsection*{Matrix/Vector}
-
-\setlength{\parindent}{0em}
-\setdefaultleftmargin{0em}{2em}{}{}{}{}
 \begin{compactdesc}
-	\item[Basics]
-	\begin{inparaitem}
-		\item $A\cdot B = C \Leftrightarrow c_{ik}=\sum_{j=1}^{m} a_{ij} \cdot b_{jk}, C=\sum_{i} a_i b_i^\top$
-		\item $A^\top\cdot B = C \Leftrightarrow c_{ik}=a_i^\top \cdot b_k$
-		\item $z=Ax\Leftrightarrow z_i=\sum_k a_{ik} x_k$
-		\item $z^\top = y^\top A \Leftrightarrow z_i = \sum_k a_{ki} y_k$
-		\item $A\cdot B=(A B^{(1)}\hspace{1pt} AB^{(2)}\hspace{1pt} \dots)=(A^{[1]}B\hspace{3pt}A^{[2]}B\hspace{3pt}\dots)^\top$
-		\item $\mathbf{Ker}(A)=\{x|Ax=0\}$, $\mathbf{Im}(A)=\{y|\exists x.Ax=y\}$
-		\item $\mathbf{Rank}(A) := dim(\mathbf{Im}(A))$
-		\item $\mathbf{Rank}(A\cdot B) \leq min(\mathbf{Rank}(A), \mathbf{Rank}(B))$
-		\item $dim(A)=\mathbf{Rank}(A) + dim(\mathbf{Ker}(A))$
-	\end{inparaitem}
+	\item[Basics:]
+		| $A\cdot B = C \Leftrightarrow c_{ik}=\sum_{j=1}^{m} a_{ij} \cdot b_{jk}, C=\sum_{i} a_i b_i^\top$
+
+		| $A^\top\cdot B = C \Leftrightarrow c_{ik}=a_i^\top \cdot b_k$
+		| $z=Ax\Leftrightarrow z_i=\sum_k a_{ik} x_k$
+		| $z^\top = y^\top A \Leftrightarrow z_i = \sum_k a_{ki} y_k$
+		| $A\cdot B=(A B^{(1)}\hspace{1pt} AB^{(2)}\hspace{1pt} \dots)=(A^{[1]}B\hspace{3pt}A^{[2]}B\hspace{3pt}\dots)^\top$
+		| $\mathbf{Ker}(A)=\{x|Ax=0\}$, $\mathbf{Im}(A)=\{y|\exists x.Ax=y\}$
+		| $\mathbf{Rank}(A) := dim(\mathbf{Im}(A))$
+		| $\mathbf{Rank}(A\cdot B) \leq min(\mathbf{Rank}(A), \mathbf{Rank}(B))$
+		| $dim(A)=\mathbf{Rank}(A) + dim(\mathbf{Ker}(A))$
+
 	\item[Tr:] $\mathbf{Tr}(A) := \sum_i a_{ii}$, $\mathbf{Tr}(rA+sB)=r\mathbf{Tr}(A)+s\mathbf{Tr}(B)$, $\mathbf{Tr}(ABC)=\mathbf{Tr}(CAB)=\mathbf{Tr}(BCA)$
 	\item[Vec(A):] Column by col. forming a new vector
 	\item[det(A)=0:] $\exists$ linear dependent cols/rows
