@@ -1,6 +1,9 @@
 % -*- root: Main.tex -*-
 \section{Essentials}
 \subsection*{Matrix/Vector}
+
+\setlength{\parindent}{0em}
+\setdefaultleftmargin{0em}{2em}{}{}{}{}
 \begin{compactdesc}
 	\item $A\cdot B = C \Leftrightarrow c_{ik}=\sum_{j=1}^{m} a_{ij} \cdot b_{jk}, C=\sum_{i} a_i b_i^\top$
 	\item $A^\top\cdot B = C \Leftrightarrow c_{ik}=a_i^\top \cdot b_k$
@@ -25,12 +28,12 @@
 		\item $\langle \mathbf{x}, \mathbf{y} + \mathbf{z} \rangle = \langle \mathbf{x}, \mathbf{y} \rangle + \langle \mathbf{x}, \mathbf{z} \rangle$
 		\item $\langle \mathbf{x}, \mathbf{y} \rangle = \|\mathbf{x}\|_2 \cdot \|\mathbf{y}\|_2 \cdot \cos(\theta)$
 		\item Projection of $\mathbf{y}$ onto $\mathbf{x}$: $\mathbf{y_x}= \frac{\langle \mathbf{x}, \mathbf{y} \rangle}{\|\mathbf{x}\|_2} \cdot \frac{\mathbf{x}}{\|\mathbf{x}\|_2}$ or $\mathbf{y_x}= \langle \mathbf{x}, \mathbf{y} \rangle \cdot \mathbf{x}$ when $\mathbf{x}$ is a unit vector.
+		\item compl. to orth. proj.  $\mathbf{v} - \langle \mathbf{u},\mathbf{v} \rangle \mathbf{u}$
+		\item Fact: $\langle \mathbf{v} , \mathbf{u} \rangle \mathbf{u} = (\mathbf{uu}^T)\mathbf{v}$
+		\item Householder-Refl.: $H_u=I-2uu^\top$ sym.+orth.
 	\end{inparaitem}
 	\item[Outer Product:] $\mathbf{u} \mathbf{v}^\top$, $(\mathbf{u} \mathbf{v}^\top)_{i, j} = \mathbf{u}_i \mathbf{v}_j$
 	\item[Transp. + Inv.:] $(\mathbf{A}^\top)^{-1} = (\mathbf{A}^{-1})^\top$
-	\item[Fact:] $\langle \mathbf{v} , \mathbf{u} \rangle \mathbf{u} = (\mathbf{uu}^T)\mathbf{v}$
-	\item[Proj. to orth. compl.:] $v-<u,v>u$
-	\item[Householder-Refl.:] $H_u=I-2uu^\top$ sym.+orth.
 	\item[Jacobian:] $D f(x)=(\frac{\partial f_i(x)}{\partial x_j})_{i=1..m, j=1..n} \in \mathbb{R}^{m\cdot n}$
 \end{compactdesc}
 
