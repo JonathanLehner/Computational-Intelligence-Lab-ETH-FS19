@@ -38,14 +38,21 @@
 	\item[Outer Product:] $\mathbf{u} \mathbf{v}^\top$, $(\mathbf{u} \mathbf{v}^\top)_{i, j} = \mathbf{u}_i \mathbf{v}_j$
 	\item[Transp. + Inv.:] $(\mathbf{A}^\top)^{-1} = (\mathbf{A}^{-1})^\top$
 	\item[Jacobian:] $D f(x)=(\frac{\partial f_i(x)}{\partial x_j})_{i=1..m, j=1..n} \in \mathbb{R}^{m\cdot n}$
-\end{compactdesc}
 
-\subsection*{Norms}
-$\|\mathbf{x}\|_0 = |\{i | x_i \neq 0\}|$ \qquad $\|\mathbf{x}\|_2 = \sqrt{\sum_{i=1}^{N} \mathbf{x}_i^2} = \sqrt{\langle \mathbf{x}, \mathbf{x} \rangle}$\\
-$\|\mathbf{x}\|_p = \left( \sum_{i=1}^{N} |x_i|^p \right)^{\frac{1}{p}}$\\
-$\|\mathbf{M}\|_F =\allowbreak \sqrt{\sum_{i=1}^{m} \sum_{j=1}^{n}\mathbf{m}_{i,j}^2} =\allowbreak \sqrt{\sum_{i=1}^{\min\{m, n\}} \sigma_i^2} = \sqrt{trace(A^\top A)}$\\
-$\|\mathbf{M}\|_1 = \sum_{i,j} | m_{i,j}|$ \qquad $\|\mathbf{M}\|_2 = \sigma_{\text{max}}(\mathbf{M})$\\
-$\|\mathbf{M}\|_p = \max_{\mathbf{v} \neq 0} \frac{\|\mathbf{M}\mathbf{v}\|_p}{\|\mathbf{v}\|_p}$ \qquad $\|\mathbf{M}\|_\star = \sum_{i=1}^{\min(m, n)} \sigma_i$ \qquad $\|\mathbf{M}\|_G = \sqrt{\sum_{i,j} \mathbf{g}_{ij} \mathbf{m}_{ij}^2}$
+	\item[Norms:]
+	\begin{inparaitem}
+		\item $\|\mathbf{x}\|_0 = |\{i | x_i \neq 0\}|$ 
+		\item $\|\mathbf{x}\|_2 = \sqrt{\sum_{i=1}^{N} \mathbf{x}_i^2} = \sqrt{\langle \mathbf{x}, \mathbf{x} \rangle}$
+		\item $\|\mathbf{x}\|_p = \left( \sum_{i=1}^{N} |x_i|^p \right)^{\frac{1}{p}}$
+		\item $\|\mathbf{M}\|_F =\allowbreak \sqrt{\sum_{i=1}^{m} \sum_{j=1}^{n}\mathbf{m}_{i,j}^2} =\allowbreak \sqrt{\sum_{i=1}^{\min\{m, n\}} \sigma_i^2} = \sqrt{trace(A^\top A)}$
+		\item $\|\mathbf{M}\|_1 = \sum_{i,j} | m_{i,j}|$  
+		\item $\|\mathbf{M}\|_2 = \sigma_{\text{max}}(\mathbf{M})$
+		\item $\|\mathbf{M}\|_\star = \sum_{i=1}^{\min(m, n)} \sigma_i$ 
+		\item $\|\mathbf{M}\|_p = \max_{\mathbf{v} \neq 0} $ 
+		\item $\frac{\|\mathbf{M}\mathbf{v}\|_p}{\|\mathbf{v}\|_p}$
+		\item $\|\mathbf{M}\|_G = \sqrt{\sum_{i,j} \mathbf{g}_{ij} \mathbf{m}_{ij}^2}$
+	\end{inparaitem}
+\end{compactdesc}
 
 \subsection*{Sums}
 $\sum_{n=a}^b f(n) = \sum_{n=0}^b f(n) - \sum_{n=0}^{n-1} f(n)$\\
