@@ -33,9 +33,6 @@ $\mathcal{N}(x|\mu, \sigma^2) = \frac{1}{\sqrt{2\pi \sigma^2}} e^{- \frac{1}{2} 
 Covariance matrix $\Sigma$, Mean $\mu$ , $D$-dimensional:\\
 $\mathcal{N}_D(x| \mu, \Sigma) = \frac{1}{\sqrt{(2\pi)^D det(\Sigma)}} e^{- \frac{1}{2} (x-\mu)^T \Sigma^{-1} (x-\mu)}$
 
-\subsection*{K-Means vs. EM (Discussion)}
-Hard vs soft assignment. Fixed spherical clusters vs variable covariance matrix. Fast vs slow and more iteration. K-means possible initialization for EM.\\
-K-means is special case of GMM with covariances $\Sigma_j = \sigma^2 * I$. For $\sigma \rightarrow 0$, recover K-means.
 
 \subsection*{Model Order Selection (AIC / BIC for GMM)}
 Trade-off between data fit (i.e. likelihood $p(\mathbf{X} | \theta)$) and complexity (i.e. \# of free parameters $\kappa(\cdot)$). For choosing $K$:\\

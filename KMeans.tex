@@ -1,5 +1,6 @@
 % !TEX root = Main.tex
 \section{K-Means}
+K-means is special case of GMM with covariances $\Sigma_j = \sigma^2 * I$. For $\sigma \rightarrow 0$, recover K-means.
 \textbf{Target:} $\min_{\mathbf{U}, \mathbf{Z}} J(\mathbf{U}, \mathbf{Z}) = \|\mathbf{X} - \mathbf{U} \mathbf{Z}\|_F^2$\\
 $= \sum_{n=1}^N \sum_{k=1}^K \mathbf{z}_{k,n} \|\mathbf{x}_n - \mathbf{u}_k\|_2^2$\\
 1. \textbf{Initiate:} choose $K$ centroids $\mathbf{U} = [\mathbf{u}_1, \ldots, \mathbf{u}_K]$\\
