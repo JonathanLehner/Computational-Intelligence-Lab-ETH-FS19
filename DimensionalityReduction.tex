@@ -9,9 +9,8 @@ $\mathbf{X} \in \mathbb{R}^{D \times N}$. $N$ observations, $K$ rank.\\
 6. Transform data onto new Basis: $\overline{\mathbf{Z}}_K = \mathbf{U}_K^\top \overline{\mathbf{X}}$.\\
 7. Reconstruct to original Basis: $\tilde{\overline{\mathbf{X}}} = \mathbf{U}_k \overline{\mathbf{Z}}_K$.\\
 8. Reverse centering: $\tilde{\mathbf{X}} = \tilde{\overline{\mathbf{X}}} + \mathbf{M}$.\\
-For compression save $\mathbf{U}_k, \overline{\mathbf{Z}}_K, \overline{\mathbf{x}}$.\\
-$\mathbf{U}_k \in \mathbb{R}^{D \times K}, \boldsymbol{\Sigma} \in \mathbb{R}^{D \times D}, \overline{\mathbf{Z}}_K \in \mathbb{R}^{K \times N}, \overline{\mathbf{X}} \in \mathbb{R}^{D \times N}$\\
-\textbf{Note:} $Var[z]=u^\top \Sigma u$\qquad \textbf{err:} $||\tilde{X}-\bar{X}||_F^2$
+For compression save $\mathbf{U}_k, \overline{\mathbf{Z}}_K, \overline{\mathbf{x}}$. $\mathbf{U}_k \in \mathbb{R}^{D \times K}, \boldsymbol{\Sigma} \in \mathbb{R}^{D \times D}, \overline{\mathbf{Z}}_K \in \mathbb{R}^{K \times N}, \overline{\mathbf{X}} \in \mathbb{R}^{D \times N}$ 
+\textbf{Note:} $Var[z]=u^\top \Sigma u$ \textbf{err:} $\frac{1}{N}||\tilde{X}-\bar{X}||_F^2 = \sum_{i=K+1}^{D}\lambda_i$
 
 %\subsection*{Iterative View}
 %Residual $r_i$: $x_i - \tilde{x}_i = I - uu^T  x_i$\\
