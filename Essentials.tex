@@ -41,10 +41,10 @@
 		\item $\|\mathbf{x}\|_0 = |\{i | x_i \neq 0\}|$ 
 		\item $\|\mathbf{x}\|_2 = \sqrt{\sum_{i=1}^{N} \mathbf{x}_i^2} = \sqrt{\langle \mathbf{x}, \mathbf{x} \rangle}$
 		\item $\|\mathbf{x}\|_p = \left( \sum_{i=1}^{N} |x_i|^p \right)^{\frac{1}{p}}$
-		\item $\|\mathbf{M}\|_F =\allowbreak \sqrt{\sum_{i=1}^{m} \sum_{j=1}^{n}\mathbf{m}_{i,j}^2} =\allowbreak \sqrt{\sum_{i=1}^{\min\{m, n\}} \sigma_i^2} = \sqrt{trace(A^\top A)}$
+		\item $\|\mathbf{M}\|_F =\allowbreak \sqrt{\sum_{i=1}^{m} \sum_{j=1}^{n}\mathbf{m}_{i,j}^2} =\allowbreak \sqrt{\sum_{i=1}^{\min\{m, n\}} \sigma_i^2} = \sqrt{trace(M^\top M)}$
 		\item $\|\mathbf{M}\|_1 = \sum_{i,j} | m_{i,j}|$  
-		\item $\|\mathbf{M}\|_2 = \sigma_{\text{max}}(\mathbf{M})$
-		\item $\|\mathbf{M}\|_{*} = \sum_{i=1}^{\min(m, n)} \sigma_i$ 
+		\item Spectral: $\|\mathbf{M}\|_2 = \sigma_{\text{max}}(\mathbf{M})$
+		\item Nuclear: $\|\mathbf{M}\|_{*} = \sum_{i=1}^{\min(m, n)} \sigma_i$ 
 		\item $\|\mathbf{M}\|_p = \max_{\mathbf{v} \neq 0} $ 
 		\item $\frac{\|\mathbf{M}\mathbf{v}\|_p}{\|\mathbf{v}\|_p}$
 		\item $\|\mathbf{M}\|_G = \sqrt{\sum_{i,j} \mathbf{g}_{ij} \mathbf{m}_{ij}^2}$
@@ -72,8 +72,10 @@ $\frac{\partial}{\partial \mathbf{x}}(\| \mathbf{x}-\mathbf{b} \|_2) = \frac{\ma
 $\frac{\partial}{\partial \mathbf{x}}(\|\mathbf{x}\|^2_2) = \frac{\partial}{\partial \mathbf{x}} (\mathbf{x}^\top \mathbf{x}) = 2\mathbf{x}$\\
 $\frac{\partial}{\partial \mathbf{X}}(\|\mathbf{X}\|_F^2) = 2\mathbf{X}$\quad
 $\frac{\partial}{\partial \mathbf{X}} \mathbf{Tr}(\mathbf{X})=\mathbf{I}$ \\
-$\frac{\partial}{\partial \mathbf{x}}(\|\mathbf{Ax - b}\|_2^2) = \mathbf{2(A^\top Ax-A^\top b)}$ |
-$\mathbf{H_{i,j}}=\frac{\partial^2 f}{\partial x_i \partial x_j}$
+$\frac{\partial}{\partial \mathbf{x}}(\|\mathbf{Ax - b}\|_2^2) = \mathbf{2(A^\top Ax-A^\top b)}$ \\
+Hessian: $\mathbf{H_{i,j}}=\frac{\partial^2 f}{\partial x_i \partial x_j}$ |
+$(f \circ g)' = (f' \circ g) \cdot g' $
+
 
 \subsection*{Eigenvalue / -vectors}
 Eigenvalue Problem: $\mathbf{Ax} = \lambda \mathbf{x}$\\

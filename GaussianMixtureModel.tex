@@ -10,10 +10,10 @@ $p_\theta(\mathbf{x}, \mathbf{z}) = \prod_{k=1}^K \left( \boldsymbol{\pi}_k p_{\
 \textbf{Posterior Probabilities:} $\\\operatorname{Pr}(z_k = 1 | \mathbf{x}) = \frac{\operatorname{Pr}(z_k = 1) p(\mathbf{x} | z_k = 1)}{\sum_{l=1}^K \operatorname{Pr}(z_l = 1) p(\mathbf{x} | z_l = 1)} = \frac{\boldsymbol{\pi}_k p_{\theta_k}(\mathbf{x})}{\sum_{l=1}^K \boldsymbol{\pi}_l p_{\theta_l}(\mathbf{x})}$
 \textbf{Likelihood of observed data $\mathbf{X}$:}\\
 $p_\theta(\mathbf{X}) = \prod_{n=1}^N p_\theta(\mathbf{x}_n) = \prod_{n=1}^N \left(\sum_{k=1}^K \pi_k p_{\theta_k}(\mathbf{x}_n)\right)$
-\textbf{MLE (via Jensen's Inequality):}\\
+\textbf{Max. Likelihood Estimation (MLE):}\\
 $\argmax_\theta\sum_{n=1}^N \log \left( \sum_{k=1}^K \pi_k p_{\theta_k}(\mathbf{x}_n)\right)\\
 \ge \sum_{n=1}^N \sum_{k=1}^K{q_{kn}[\log p_{\theta_k}(\mathbf{x}_n) + \log \pi_k - \log q_{kn}]}$\\
-with $\forall n, \sum_{k=1}^K{q_{kn}} = 1$ by Jensen Inequality.
+with $\forall n, \sum_{k=1}^K{q_{kn}} = 1$ by Jensen's Inequality.
 
 \subsection*{Generative Model}
 1. Sample cluster index $j \sim Cat(\pi)$\\
@@ -32,6 +32,9 @@ Standard deviation $\sigma$, Mean $\mu$ \\
 $\mathcal{N}(x|\mu, \sigma^2) = \frac{1}{\sqrt{2\pi \sigma^2}} e^{- \frac{1}{2} \frac{(x-\mu)^2}{\sigma^2}}$\\
 Covariance matrix $\Sigma$, Mean $\mu$ , $D$-dimensional:\\
 $\mathcal{N}_D(x| \mu, \Sigma) = \frac{1}{\sqrt{(2\pi)^D det(\Sigma)}} e^{- \frac{1}{2} (x-\mu)^T \Sigma^{-1} (x-\mu)}$
+
+\subsection*{Discussion K-means vs. EM}
+hard assignment vs soft | spherical cluster shapes vs covariance matrix | fast vs slow and more iterations | K-means can be used as initialization for EM.
 
 
 \subsection*{Model Order Selection (AIC / BIC for GMM)}

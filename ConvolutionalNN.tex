@@ -1,7 +1,7 @@
 % !TEX root = Main.tex
 \section{Neural Networks}
 \textbf{Neurons}: $F_\sigma(\mathbf{x};\mathbf{w}) = \sigma(w_0 + \sum_{i=1}^M{x_iw_i})$.\\
-\textbf{Activation}: $s(x)=\frac{1}{1+e^{-x}}$, $s'(x)=s(x)(1-s(x))$; $tanh(x) = \tfrac{sinh(x)}{cosh(x)}$, $tanh'(x) = 1 - tanh^2(x)$;  $ReLU(x) = max(0, x)$, $ReLU'(x) = 0\  or\  1$\\
+\textbf{Activation}: $sigmoid(x)=\frac{1}{1+e^{-x}}$, $s'(x)=s(x)(1-s(x))$; $tanh(x) = \tfrac{sinh(x)}{cosh(x)}$, $tanh'(x) = 1 - tanh^2(x)$;  $ReLU(x) = max(0, x)$, $ReLU'(x) = 0\  or\  1$\\
 \textbf{Output}: Linear Regression: $\hat{\mathbf{y}} = \mathbf{W}^L\mathbf{x}^{L-1}$\\
 Binary Classification (Logistic):\\
 $\hat{y_1} = \text{P}[Y=1|\mathbf{x}] = \frac{1}{1 + \exp[-\langle \mathbf{w}_1^L,\mathbf{x}^{L-1}\rangle]}$\\

@@ -37,7 +37,7 @@ $f(x) = \frac{1}{N}\sum_{n=1}^{N}f_n(x)$\\
 % $\mathbf{x}^{(t+1)}$ is unique if $Q$ convex.
 
 \subsection*{Lagrangian Multipliers}
-Optimize  $f(\mathbf{x})$ s.t. $g_i(\mathbf{x}) \leq 0,\ i = 1, .., m$ and $h_i(\mathbf{x})=0,\ i = 1, .., l$
+Optimize  $f(\mathbf{x})$ s.t. $g_i(\mathbf{x}) \leq 0,\ i = 1, .., m$ and $h_i(\mathbf{x})=a_i^\top\mathbf{x} - b_i = 0,\ i = 1, .., l$
 \begin{compactdesc}
 	\item[Lagrangian (maximization):]
 	\item $L(\mathbf{x}, \boldsymbol{\mu}, \boldsymbol{\lambda}) := f(\mathbf{x}) - \sum_{i=1}^m \mu_i g_i(\mathbf{x}) - \sum_{i=1}^l \lambda_i h_i(\mathbf{x})$

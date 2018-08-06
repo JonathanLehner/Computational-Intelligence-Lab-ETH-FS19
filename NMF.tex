@@ -6,7 +6,8 @@
 $p(w|d) = \sum_z p(w,z|d) = \sum_z p(w|d,z)p(z|d) \stackrel{*}{=} \sum_z p(w|z)p(z|d)$ 
 | \emph{Symmetric parameterization:} $p(w, d) = \sum_z p(z)p(w | z) p(d | z)$
 \emph{EM for pLSA:}
-Log-Likelihood: $L(\mathbf{U}, \mathbf{V}) = \sum_{i,j} x_{i,j}\log p(w_j|d_i) = \sum_{(i,j) \in X} \log \sum_{z=1}^K p(w_j|z)p(z|d_i)$, where $ p(w_j|z) = v_{zj}$, $p(z|d_i) = u_{zi}$, $\sum_j^N v_{zj} = \sum_z^K u_{zi} = 1$
+Log-Likelihood: $L(\mathbf{U}, \mathbf{V}) = \sum_{i,j} x_{i,j}\log p(w_j|d_i) = \sum_{(i,j) \in X} \log \sum_{z=1}^K p(w_j|z)p(z|d_i)$, where $ p(w_j|z) = v_{zj}$, $p(z|d_i) = u_{zi}$, $\sum_j^N v_{zj} = \sum_z^K u_{zi} = 1$ \\
+$\log \sum_{z=1}^K q_{zij} \frac{u_{zi} v_{zj}}{q_{zij}} \geq \sum_{z=1}^K q_{zij} [ \log u_{zi} + \log v_{zj} - \log q_{zij}]$
 | E-Step (optimal q): $q_{zij} = \frac{p(w_j|z)p(z|d_i)}{\sum_{k=1}^K p(w_j|k)p(k|d_i)} := \frac{v_{zj}u_{zi}}{\sum_{k=1}^K v_{kj}u_{ki}}$
 | M-Steps:$p(z|d_i) = \frac{\sum_j x_{ij}q_{zij}}{\sum_j x_{ij}}, p(w_j|z) = \frac{\sum_i x_{ij}q_{zij}}{\sum_{i,l}x_{il}q_{zil}}$
 \subsection*{Latent Dirichlet Allocation}
