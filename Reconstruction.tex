@@ -1,0 +1,16 @@
+\section*{Matrix Reconstruction}
+\subsection*{Alternating Least Squares}
+Beyond SVD: unobserved entries!
+$f(\mathbf{U},v_i)=\sum_{(i,j)\in I} (a_{i,j} - \langle \mathbf{u}_j, \mathbf{v}_i \rangle)^2$,
+Fix one, alternate other: \\
+$\mathbf{U} \gets \argmin_\mathbf{U} f(\mathbf{U},\mathbf{V})$, $\mathbf{V} \gets \argmin_\mathbf{V} f(\mathbf{U},\mathbf{V})$ \\
+Can decompose (solve independently) \\
+$f(\mathbf{U},v_i)=\sum_i \left[ \sum_{(i,j)\in I} (a_{i,j} - \langle \mathbf{u}_j, \mathbf{v}_i \rangle)^2 \right]$ \\
+Can add regularization $\mu (||U||_F^2 + ||V||_F^2 )\quad \mu >0$ \\
+Upd: $u_i = \left( \sum_{(i,j)\in \mathcal{I}} v_jv_j^\top + I_k\lambda\right)^{-1} \left(\sum_{(i,j)\in \mathcal{I}} a_{ij}v_j \right)$
+
+\subsection*{SVD Thresholding}
+$\mathbf{B}^{*}=\mathit{shrink}_\tau(\mathbf{A}):=\argmin_{\mathbf{B}}{\{\|\mathbf{A-B}\|^2_F + \tau\|\mathbf{B}\|_{*}\}}$\\
+then with SVD holds $\mathbf{B^*=UD_\tau V^T, D_\tau} =$ \\
+$\mathit{diag}(\max\{0,\sigma_i - \tau\}),\Pi(\mathbf{X}) = x_{ij} \text{ if } (i,j) \in \mathcal{I} \text{ el. } 0$ \\
+Iteration: $\mathbf{B}_{t+1}=\mathbf{B}_t + \eta_t \Pi(\mathbf{A} - \mathit{shrink}_\tau(\mathbf{B}_t))$

@@ -1,0 +1,13 @@
+\section*{Neural Networks}
+\textbf{Activation:} ReLU: $\max(0,x)$ \\
+$\tanh(x)=\frac{e^x-e^{-x}}{e^x+e^{-x}}$, $\tanh'(x) = 1 - \tanh^2(x)$ \\
+sigmoid $s(x)= \frac{1}{1+e^{-x}},s^{'}(x)=s(x)(1-s(x))$\\
+\textbf{Output}: linear regression $\mathbf{y} = \mathbf{W}^L\mathbf{x}^{L-1}$, \\binary (logistic) $y_1 = \frac{1}{1 + \exp(-\mathbf{w}^T \mathbf{x}^{L-1})}$, \\multiclass (soft-max) $y_k = \frac{\exp( \mathbf{w}_k^T\mathbf{x}^{L-1})}{\sum_{m=1}^{K}{\exp(\mathbf{w}^T\mathbf{x}^{L-1})}}$.\\
+\textbf{Loss function:} $l(y, \hat{y})$: squared loss $\frac{1}{2}(y - \hat{y})^2$, \\
+cross-entropy loss $-y \log \hat{y} - (1-y)\log(1-\hat{y})$\\
+$\text{Conv}_{n,m}^{k\times k}(\mathbf{x};\mathbf{w})=\sigma \left( b + \sum_{i=-k}^k \sum_{j=-k}^k w_{i,j}x_{n+i,m+j} \right) $\\
+\textbf{CNN:} weight sharing ($<<$ param), shift invar. filters
+
+\subsection*{Backpropagation}
+$J_{ij} = \frac{\partial \mathbf{x}_i^{out}}{\partial \mathbf{x}_j^{in}} = w_{ij}\cdot\sigma'(\mathbf{w}_i^\top\mathbf{x}^{in})$. Across multiple layers: $\frac{\partial\mathbf{x}^{(l)}}{\partial\mathbf{x}^{(l-n)}} = \mathbf{J}^{(l)}\cdot\frac{\partial\mathbf{x}^{(l-1)}}{\partial\mathbf{x}^{(l-n)}}=\mathbf{J}^{(l)}\cdot\mathbf{J}^{(l-1)}\cdots\mathbf{J}^{(l-n+1)}$ and then back prop. $ \nabla_{\mathbf{x}^{(l)}}^\top\ell=\nabla_{\mathbf{y}}^\top\ell\cdot\mathbf{J}^{(L)}\cdots\mathbf{J}^{(l+1)}$\\
+$\frac{\partial l}{\partial w_{ij}^{(l)}} = \frac{\partial l}{\partial x_i^{(l)}}\frac{\partial x_i^{(l)}}{\partial w_{ij}^{(l)}}$, $\frac{\partial x_i^{l}}{\partial w_{ij}^{l}} = \sigma'([\mathbf{w}_i^{(l)}]^T \mathbf{x}^{(l-1)})\cdot x_j^{(l-1)}$ 

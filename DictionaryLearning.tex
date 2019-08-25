@@ -1,0 +1,9 @@
+\section*{Dictionary Learning}
+Adapt the dict. to signal charact.$(\mathbf{U}^\star, \mathbf{Z}^\star) \in \argmin_\mathbf{U,Z} \| \mathbf{X} - \mathbf{U}\mathbf{Z} \|_F^2$ not jointly convex (just 1 arg)
+
+\textbf{Matrix Factorization by Iter Greedy Minim.}
+\begin{inparaenum}[\color{gray} 1.]
+  \item Coding step: $\mathbf{Z}^{t+1} \in \argmin_\mathbf{Z} \| \mathbf{X} - \mathbf{U}^t \mathbf{Z} \|_F^2$ subj. to $\mathbf{Z}$ being sparse ($\mathbf{z}_n^{t+1}\in \argmin_\mathbf{z}\|\mathbf{z}\|_0$ s.t. \\ $\|\mathbf{x}_n - \mathbf{U}^t\mathbf{z}\|_2 \le \sigma \|\mathbf{x}_n\|_2$) 
+  \item Init: random, samples from $X$ or fixed overcomplete dictionary.
+  \item Dict update step: $\mathbf{U}^{t+1} \in \argmin_\mathbf{U} \| \mathbf{X} - \mathbf{UZ}^{t+1} \|_F^2$, subj. to $\forall l\in [L]:\|\mathbf{u}_l\|_2 = 1$ One at a time: set $\mathbf{U} = [\mathbf{u}_1^t\cdots \mathbf{u}_l\cdots \mathbf{u}_L^t]$ (fix all except $\mathbf{u}_l$), isolate $\mathbf{R}_l^t$ (residual due to atom $\mathbf{u}_l$), find $\mathbf{u}_l^*$ that minimizes $\mathbf{R}_l^t$ s.t. $||\mathbf{u}_l^*||_2=1$: $\min_{u_l}\|\mathbf{R}_l^t - \mathbf{u}_l(\mathbf{z}_l^{t+1})^\top\|_F^2$ using SVD (first left-singular vector of $\mathbf{R}_l^t$).
+\end{inparaenum}

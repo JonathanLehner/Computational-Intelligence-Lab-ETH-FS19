@@ -1,28 +1,37 @@
-% !TEX root = Main.tex
-\section{Non-Negative Matrix Factorization}
-\textbf{pLSA:}
-\emph{Context Model:} $p(w | d) = \sum_{z=1}^K p(w | z) p(z | d)$ 
-\emph{Cond. indep. assumpt. ($*$):}
-$p(w|d) = \sum_z p(w,z|d) = \sum_z p(w|d,z)p(z|d) \stackrel{*}{=} \sum_z p(w|z)p(z|d)$ 
-| \emph{Symmetric parameterization:} $p(w, d) = \sum_z p(z)p(w | z) p(d | z)$
-\emph{EM for pLSA:}
-Log-Likelihood: $L(\mathbf{U}, \mathbf{V}) = \sum_{i,j} x_{i,j}\log p(w_j|d_i) = \sum_{(i,j) \in X} \log \sum_{z=1}^K p(w_j|z)p(z|d_i)$, where $ p(w_j|z) = v_{zj}$, $p(z|d_i) = u_{zi}$, $\sum_j^N v_{zj} = \sum_z^K u_{zi} = 1$ \\
-$\log \sum_{z=1}^K q_{zij} \frac{u_{zi} v_{zj}}{q_{zij}} \geq \sum_{z=1}^K q_{zij} [ \log u_{zi} + \log v_{zj} - \log q_{zij}]$
-| E-Step (optimal q): $q_{zij} = \frac{p(w_j|z)p(z|d_i)}{\sum_{k=1}^K p(w_j|k)p(k|d_i)} := \frac{v_{zj}u_{zi}}{\sum_{k=1}^K v_{kj}u_{ki}}$
-| M-Steps:$p(z|d_i) = \frac{\sum_j x_{ij}q_{zij}}{\sum_j x_{ij}}, p(w_j|z) = \frac{\sum_i x_{ij}q_{zij}}{\sum_{i,l}x_{il}q_{zil}}$
+\section*{Non-Negative Matrix Factorization}
+Want to learn words $w$ in a document $d$. Use topic latent variable: 
+$\mathbf{X} \in \mathbb{Z}^{N \times M}_{\geq 0}$, NMF: $\mathbf{X} \approx \mathbf{U^\top V}, x_{ij}=\sum_z{u_{zi}v_{zj}}=\langle\mathbf{u}_i \mathbf{v}_j\rangle$
+$\mathbf{U},\mathbf{V}$ are non-neg., $L_1$ col normal.
+\subsection*{Probabilistic LSA}
+\textbf{Context Model:} $p(w | d) = \sum_{i=1}^K p(w | i) p(i | d)$\\
+\textbf{Conditional independence assumption ($*$):}\\
+$p(w|d) = \sum_i p(w,i|d) = \sum_i p(w|d,i)p(i|d) \stackrel{*}{=}$\\$\sum_i p(w|i)p(i|d)$ \quad Note $p(w|i):=p(w|z=i)$\\
+\textbf{Symmetric parameterization:}\\
+$p(w, d) = \sum_z p(z)p(w | z) p(d | z)$
+\subsection*{EM for MLE for pLSA (NO global opt guarantee)}
+Log-Likelihood: $L(\mathbf{U}, \mathbf{V}) = \sum_{w,d} X_{w,d}\log p(w|d)$ \\
+$ p(w|i) = u_{wi}$, $p(i|d) = v_{id}$, $\sum_w u_{wi} = \sum_i v_{di} = 1$\\
+$q_{iwd} \in \{0,1\}: w \text{ in } d \text{ generated via } z=i$. \\
+Lower bound from Jensen: $\sum_{w,d}\log \sum_{z=1}^K q_{iwd} \frac{u_{wi}v_{id}}{q_iwd} \geq \sum_{w,d,i} q_{iwd} [\log u_{wi} + \log v_{id} - \log q_{iwd}]$\\
+Don't forget to add the sum over $i,j$ and $X_{ij}$ again.
+E-Step (optimal q: posterior $p(z=i|w,d)$):\\
+$q_{iwd} = \frac{p(w|i)p(i|d)}{\sum_{k=1}^K p(w|k)p(k|d)} := \frac{u_{wi}v_{id}}{\sum_{k=1}^K u_{wk}v_{kd}}$, $\sum_i q_{iwd}=1$\\
+M-Steps:\\
+$p(w|i)=u_{wi} = \frac{\sum_d q_{iwd}X_{wd}}{\sum_{w,d}q_{iwd}X_{wd}}, \ 
+p(i|d)=v_{id} = \frac{\sum_w q_{iwd}X_{wd}}{\sum_{w}X_wd}$ \\
+\textbf{Derivations:} maximize lower bound w.r.t. $\sum_w u_{wi}=1$ and $\sum_i v_{id}=1$ (no $>=0$ constraint bc. $\log$). $\min_{U,V} \max_{\alpha, \beta}\mathcal{L}$ where $\mathcal{L} = -g(X; U, V) + \sum_i \alpha_i(\sum_w u_{wi} - 1) + \sum_d \beta_d (\sum_i v_{id} - 1)$. Set $\partial \mathcal{L} / \partial u_{wi} = 0$ and get $u_{wi} = \sum_d X_{wd}q_{iwd}/\alpha_i$. Setting $\partial \mathcal{L}/\partial \alpha_i$ gives $\sum_w u_{wi} = 1 \to \sum_{w,d} X_{wd} q_{iwd} / \alpha_i = 1 \to \alpha_i = 1 / (\sum_{w,d} X_{wd} q_{iwd})$ then plug it in. Similar for $v_{id}$ but with extra step: $\sum_w X_{wd} \sum_i q_{iwd} / \beta_d = 1 \to \beta_d = 1/(\sum_w X_{wd})$ since $\sum_i q_{iwd}=1$.
+ 
 \subsection*{Latent Dirichlet Allocation}
-To sample a new document, we need to extend $X$ and $U^T$ with a new row, s.t. $X=U^T V$. pLSA fixes both dimensions.\\
-Dirichlet distribution: $p(u_i|\alpha) = \prod_{z=1}^K u_{zi}^{\alpha_k-1}$\\
-LDA model: $p(x|V,u) = \frac{l!}{\prod_j x_j!}\prod_j \pi_j^{x_j}$\\
-where $\pi_j=\sum_z v_{zj} u_z$, $l=\sum_j x_j$
-
-\subsection*{NMF Algorithm for quadratic cost function}
-$\mathbf{X} \in \mathbb{Z}^{N \times M}_{\geq 0}$, NMF: $\mathbf{X} \approx \mathbf{U^\top V}, x_{ij}$
-
-$\min_{\mathbf{U}, \mathbf{V}} J(\mathbf{U}, \mathbf{V}) = \frac{1}{2} \|\mathbf{X} - \mathbf{U}^\top\mathbf{V}\|_F^2$\\
-s.t. $\forall i,j,z:u_{zi},v_{zj} \geq 0 $
-
-
-1. init: $\mathbf{U}, \mathbf{V} = rand()$ 2. repeat for $\mathit{maxIters}$:\\
+To sample new $d$, need to extend $X$ and $U^T$ (in pLSA matrix dims fixed). For each $d_i$ sample topic weights $\mathbf{u}_i$\textasciitilde Dirichlet($\alpha$): $p(u_i|\alpha) = \prod_{z=1}^K u_{zi}^{\alpha_k-1}$, then topic $z^t$\textasciitilde Multi($u_i$), word $w^t$\textasciitilde Multi($v_{z^t}$)\\
+LDA Model: $p(\mathbf{x}|V,u) = \frac{l!}{\prod_j \mathbf{x}_j!}\prod_j \pi_j^{\mathbf{x}_j}$ 
+where $\pi_j=\sum_z v_{zj} u_z$, $l=\sum_j x_j$ and $l = \sum_j x_j$\\
+Bayesian averaging over $\mathbf{u}$: \\
+$p(\mathbf{x}|\mathbf{V},\alpha)=\int p(\mathbf{x}|\mathbf{V},\mathbf{u})p(\mathbf{u}|\alpha)d\mathbf{u}$
+\subsection*{NMF Algorithm for Quadratic Cost Function}
+$\min_{\mathbf{U}, \mathbf{V}} J(\mathbf{U}, \mathbf{V}) = \frac{1}{2} \|\mathbf{X} - \mathbf{U}^\top\mathbf{V}\|_F^2$
+s.t. $\forall i,j,z:u_{zi},v_{zj} \geq 0 $ (non-negativity)\\
+Comparison with pLSA: different sampling model (Gaussian not multinomial), different objective (quadratic not KL divergence), not normalized \\
+ALS (not joint convex over (U,V)):\\
+1. init: $\mathbf{U}, \mathbf{V} = rand()$ 2. repeat 3\textasciitilde4 for $\mathit{maxIters}$:\\
 3. upd. $(\mathbf{VV}^\top)\mathbf{U} = \mathbf{VX}^\top$, proj. $u_{zi} = \max \{ 0, u_{zi} \}$\\
 4. update $(\mathbf{UU}^\top)\mathbf{V} = \mathbf{UX}$, proj. $v_{zj} = \max \{ 0, v_{zj} \}$

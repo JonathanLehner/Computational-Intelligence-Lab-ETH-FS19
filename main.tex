@@ -10,9 +10,14 @@
 \usepackage{multicol}
 \usepackage{wrapfig}
 \usepackage{paralist}
-\usepackage[top=0mm,bottom=3mm,left=1mm,right=1mm]{geometry}
+\usepackage[top=0mm,bottom=2mm,left=1mm,right=1mm]{geometry}
 \usepackage[framemethod=tikz]{mdframed}
 \usepackage{microtype}
+\usepackage{mathptmx}
+\usepackage[compact]{titlesec}
+\titlespacing{\section}{0pt}{2ex}{1ex}
+\titlespacing{\subsection}{0pt}{1ex}{0ex}
+\titlespacing{\subsubsection}{0pt}{0.5ex}{0ex}
 
 % math helpers
 \DeclareMathOperator*{\argmin}{arg\,min}
@@ -21,7 +26,7 @@
 \let\bar\overline
 
 \definecolor{myblue}{cmyk}{1,0.72,0,0.38}
-\definecolor{myorange}{cmyk}{0,0.5,1,0}
+\definecolor{myorange}{rgb}{0.588,0,0.118}
 
 \pgfdeclarelayer{background}
 \pgfsetlayers{background,main}
@@ -59,19 +64,22 @@ Daniel Yu,~page~\thepage~of~2
 
 \makeatother
 \setlength{\parindent}{0pt}
-\setdefaultleftmargin{0em}{2em}{}{}{}{}
+\setlength{\columnsep}{5pt}
+
 \begin{document}
 \small
 \begin{multicols*}{4}
+\setcounter{section}{-1}
 \input{Essentials}
-\input{DimensionalityReduction}
 \input{SVD}
-\input{Optimization}
+\input{PCA}
+\input{Reconstruction}
 \input{NMF}
 \input{WordEmbedding}
-\input{KMeans}
-\input{GaussianMixtureModel}
-\input{ConvolutionalNN}
+\input{Mixture}
+\input{NeuralNetworks}
+\input{Generative}
 \input{SparseCoding}
+\input{DictionaryLearning}
 \end{multicols*}
 \end{document}
